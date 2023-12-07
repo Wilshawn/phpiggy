@@ -27,9 +27,10 @@
         <label class="block">
             <span class="text-gray-700">Country</span>
             <select name="country" class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                <?php $country = isset($oldFormData['country']) ? $oldFormData['country'] : ''; ?>
                 <option value="USA">USA</option>
-                <option value="Canada" <?php echo $oldFormData['country'] === 'Canada' ? 'selected' : ''; ?>>Canada</option>
-                <option value="Mexico" <?php echo $oldFormData['country'] === 'Mexico' ? 'selected' : ''; ?>>Mexico</option>
+                <option value="Canada" <?php echo $country === 'Canada' ? 'selected' : ''; ?>>Canada</option>
+                <option value="Mexico" <?php echo $country === 'Mexico' ? 'selected' : ''; ?>>Mexico</option>
                 <option value="Invalid">Invalid Country</option>
             </select>
             <?php if (array_key_exists('country', $errors)) : ?>
@@ -73,7 +74,8 @@
             <div class="mt-2">
                 <div>
                     <label class="inline-flex items-center">
-                        <input <?php echo $oldFormData['tos'] ?? false ? 'checked' : ''; ?> name="tos" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" type="checkbox" />
+                        <?php $tos = isset($oldFormData['tos']) ? $oldFormData['tos'] : ''; ?>
+                        <input <?php echo $tos; ?> name="tos" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50" type="checkbox" />
                         <span class="ml-2">I accept the terms of service.</span>
                     </label>
                     <?php if (array_key_exists('tos', $errors)) : ?>
